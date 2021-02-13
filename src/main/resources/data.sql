@@ -1,5 +1,9 @@
+-- Data for the Category table
 INSERT INTO CATEGORY (CATEGORY_NAME) VALUES ('Food');
 INSERT INTO CATEGORY (CATEGORY_NAME) VALUES ('Transportation');
 INSERT INTO CATEGORY (CATEGORY_NAME) VALUES ('Credit Card Bills');
 INSERT INTO CATEGORY (CATEGORY_NAME) VALUES ('Health and Fitness');
 INSERT INTO CATEGORY (CATEGORY_NAME) VALUES ('Utilities');
+
+-- Data for the User table
+INSERT INTO USER (USER_NAME, USER_MAIL_ID) VALUES ('Shubham Kumar', 'shubham@example.com');
