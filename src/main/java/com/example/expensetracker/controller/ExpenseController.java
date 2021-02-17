@@ -1,5 +1,6 @@
 package com.example.expensetracker.controller;
 
+import com.example.expensetracker.dto.ExpenseDTO;
 import com.example.expensetracker.entity.Expense;
 import com.example.expensetracker.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class ExpenseController {
     }
 
     @RequestMapping(value = "/list-expense/{userId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Expense>> listExpenseByUser(@PathVariable Integer userId) {
-        List<Expense> expenseList = expenseService.listAllExpensesByUser(userId);
-        return new ResponseEntity<>(expenseList, HttpStatus.OK);
+    public ResponseEntity<ExpenseDTO> listExpenseByUser(@PathVariable Integer userId) {
+        ExpenseDTO expenseDTO = expenseService.listAllExpensesByUser(userId);
+        return new ResponseEntity<>(expenseDTO, HttpStatus.OK);
     }
 }
