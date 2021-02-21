@@ -1,10 +1,11 @@
 package com.example.expensetracker.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
-@Table(name = "expense")
+@Table(name = "expense", schema="public")
 public class Expense {
 
     @Id
@@ -23,15 +24,15 @@ public class Expense {
     private String description;
 
     @Column(name = "AMOUNT", nullable = false)
-    private Float amount;
+    private BigDecimal amount;
 
-    @Column(name = "DATE", nullable = false)
+    @Column(name = "CREATED_ON", nullable = false)
     private Date expenseDate;
 
     public Expense() {
     }
 
-    public Expense(Integer id, User user, String category, String description, Float amount, Date expenseDate) {
+    public Expense(Integer id, User user, String category, String description, BigDecimal amount, Date expenseDate) {
         this.id = id;
         this.user = user;
         this.category = category;
@@ -72,11 +73,11 @@ public class Expense {
         this.description = description;
     }
 
-    public Float getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

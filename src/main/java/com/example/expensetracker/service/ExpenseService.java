@@ -43,4 +43,8 @@ public class ExpenseService {
 
         return expenseDTO;
     }
+
+    public void addExpense(Expense expense) {
+        expenseRepository.save(expense);
+    }
 }
