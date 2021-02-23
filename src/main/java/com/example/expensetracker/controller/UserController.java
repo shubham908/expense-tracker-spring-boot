@@ -24,7 +24,7 @@ public class UserController {
     @ApiOperation(value = "Returns the user for the given user id", response = User.class)
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<User> getUser(@PathVariable Integer id) {
-        User user = userService.findUser(id).get();
+        User user = userService.findUser(id);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

@@ -1,6 +1,7 @@
 package com.example.expensetracker.service;
 
 import com.example.expensetracker.entity.User;
+import com.example.expensetracker.exception.UserNotFoundException;
 import com.example.expensetracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Optional<User> findUser(Integer id) {
-        return userRepository.findById(id);
+    public User findUser(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) {
+            throw new UserNotFoundException(String.format("User with id {%d} does not exist", id));
+        }
+        else {
+            return user.get();
+        }
     }
 
     public User addUser(User user) {
