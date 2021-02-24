@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "User Controllers")
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -32,8 +32,16 @@ public class UserController {
     @ApiOperation(value = "Adds the user to the database", response = String.class)
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<String> addUser(@RequestBody User user) {
-        User savedUser = userService.addUser(user);
+        userService.addUser(user);
 
         return new ResponseEntity<>("User Added", HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "Deletes the user for the given user id", response = String.class)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+
+        return new ResponseEntity<>("User Deleted", HttpStatus.OK);
     }
 }
